@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, Image, TouchableWithoutFeedback, View } from 'react-native';
-import CameraRoll from "@react-native-community/cameraroll";
 
 export default function Portrait() {
 
