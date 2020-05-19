@@ -1,10 +1,27 @@
 import React from 'react';
 import { StyleSheet, Image, TouchableWithoutFeedback, View } from 'react-native';
+import * as ImagePicker from 'expo-image-picker';
 
 export default function Portrait() {
 
-  const onPress = () => {
-    console.log('hi')
+  const onPress = async () => {
+    console.log('hi');
+    try {
+      let result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.Images,
+        allowsEditing: true,
+        aspect: [4, 3],
+        quality: 1,
+      });
+      if (!result.cancelled) {
+        //this.setState({ image: result.uri });
+        console.log('yep')
+      }
+
+      console.log(result);
+    } catch (E) {
+      console.log(E);
+    }
   }
 
   return (
@@ -19,7 +36,7 @@ export default function Portrait() {
   );
 }
 
-const styles = StyleSheet.create({
+const   styles = StyleSheet.create({
   portrait: {
     width: 100,
     height: 100
