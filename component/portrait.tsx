@@ -2,9 +2,13 @@ import React from 'react';
 import { StyleSheet, Image, TouchableWithoutFeedback, View } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 
-export default function Portrait() {
+export default class Portrait extends React.Component {
 
-  const onPress = async () => {
+  state = {
+    image: require('../assets/splash.png'),
+  };
+
+  onPress = async () => {
     console.log('hi');
     try {
       let result = await ImagePicker.launchImageLibraryAsync({
@@ -14,7 +18,7 @@ export default function Portrait() {
         quality: 1,
       });
       if (!result.cancelled) {
-        //this.setState({ image: result.uri });
+        this.setState({ image: { uri: result.uri } });
         console.log('yep')
       }
 
@@ -24,19 +28,22 @@ export default function Portrait() {
     }
   }
 
-  return (
-    <View>
-      <TouchableWithoutFeedback onPress={onPress}>
-        <Image
-          style={styles.portrait}
-          source={require('../assets/splash.png')}
-        />
-      </TouchableWithoutFeedback>
-    </View>
-  );
+  render() {
+
+    return (
+      <View>
+        <TouchableWithoutFeedback onPress={this.onPress}>
+          <Image
+            style={styles.portrait}
+            source={this.state.image}
+          />
+        </TouchableWithoutFeedback>
+      </View>
+    );
+  } 
 }
 
-const   styles = StyleSheet.create({
+const styles = StyleSheet.create({
   portrait: {
     width: 100,
     height: 100
