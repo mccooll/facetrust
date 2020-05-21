@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import TweetView from './component/view'
+
 export default function App() {
   return (
     <View style={styles.container}>
@@ -17,3 +18,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+// replace with this line if using storybook 
+
+// export default from './storybook';
