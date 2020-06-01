@@ -12,3 +12,4 @@ General Direction:
 * mongodb as backend storage
 * deploy will be to heroku
 * storybook will be optional
+* Review package.json, is there redundant dependencies?
